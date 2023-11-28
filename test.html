@@ -1,0 +1,60 @@
+<iframe
+  id="frame"
+  src="https://embed.styledcalendar.com/#qqJSoGOZJecEyzmPgByv"
+  title="Styled Calendar"
+  class="styled-calendar-container"
+  style="width: 100%; border: none"
+  data-cy="calendar-embed-iframe"
+></iframe>
+<script
+  async
+  type="module"
+  src="https://embed.styledcalendar.com/assets/parent-window.js"
+></script>
+
+<script>
+  function pp(args) {
+    console.log(args)
+  }
+
+    var frame = document.getElementById("frame");
+    var height = 0;
+
+    const observer = new ResizeObserver((entries) => {
+    for (const entry of entries) {
+        height = entry.target.clientHeight;
+        scrollToToday()
+      }
+    });
+
+    observer.observe(frame);
+
+
+    function scrollToToday() {
+      pp("called")
+        var sixth = Math.round(height / 6);
+        var date = new Date().getDate();
+        var y = 0;
+        switch (true) {
+          case date <= 5:
+            y = 0;
+            break;
+          case date <= 10:
+            y = sixth;
+            break;
+          case date <= 15:
+            y = sixth * 2;
+            break;
+          case date <= 20:
+            y = sixth * 3;
+            break;
+          case date <= 25:
+            y = sixth * 4;
+            break;
+          case date <= 31:
+            y = sixth * 5;
+            break;
+        }
+        window.scrollTo(0, y);
+      }
+</script>
